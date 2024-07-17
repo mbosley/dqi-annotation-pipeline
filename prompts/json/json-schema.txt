@@ -1,0 +1,110 @@
+[JSON SCHEMA]
+```json
+{
+  "participation": {
+    "reasoning": "[sophisticated reasoning about score given evidence, including direct quotes]",
+    "score": "[0/1]"
+  },
+  "justification": {
+    "level": {
+      "evidence": [
+        "evidence in favour of score 0",
+        "evidence in favour of score 1",
+        "..."
+      ],
+      "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+      "score": "[0/1/2/3/4]"
+    },
+    "content": {
+      "evidence": [
+        "evidence in favour of score 0",
+        "evidence in favour of score 1",
+        "..."
+      ],
+      "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+      "score": "[0/1/2/3]"
+    }
+  },
+  "respect": {
+    "groups": {
+      "evidence": [
+        "evidence in favour of score 0",
+        "evidence in favour of score 1",
+        "..."
+      ],
+      "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+      "score": "[0/1/2]"
+    },
+    "demands": [
+      {
+        "demand": "[brief description of demand]",
+        "evidence": [
+          "evidence in favour of score 0",
+          "evidence in favour of score 1",
+          "..."
+        ],
+        "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+        "score": "[0/1/2/3]"
+      },
+      {
+        "demand": "[brief description of demand]",
+        "evidence": [
+          "evidence in favour of score 0",
+          "evidence in favour of score 1",
+          "..."
+        ],
+        "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+        "score": "[0/1/2/3]"
+      }
+    ],
+    "counterarguments": [
+      {
+        "counterargument": "[brief description of counterargument]",
+        "evidence": [
+          "evidence in favour of score 0",
+          "evidence in favour of score 1",
+          "..."
+        ],
+        "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+        "score": "[0/1/2/3/4]"
+      },
+      {
+        "counterargument": "[brief description of counterargument]",
+        "evidence": [
+          "evidence in favour of score 0",
+          "evidence in favour of score 1",
+          "..."
+        ],
+        "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+        "score": "[0/1/2/3/4]"
+      }
+    ]
+  },
+  "constructive_politics": {
+    "evidence": [
+      "evidence in favour of score 0",
+      "evidence in favour of score 1",
+      "..."
+    ],
+    "reasoning": "[sophisticated reasoning about score given, assigning probability scores that each hypothesis is correct given the evidence]",
+    "score": "[0/1/2/3]"
+  },
+  "notes": "[any additional context or caveats]",
+  "summary": "[brief assessment of overall impressions]"
+}
+```
+
+Be sure to provide any evidence that would be consistent with EACH of the possible annotation scores for each dimension. Remember that scores MUST be integers.
+In addition, adhere to the following principles:
+1. **Use Double Quotes for Strings**:
+   - Always use double quotes (`"`) for string values and property names in JSON.
+   - Example: `"name": "John Doe"`
+
+2. **Escape Special Characters**:
+   - Escape any double quotes within string values using a backslash (`\`).
+   - Example: `"quote": "She said, \"Hello!\""`
+
+3. **Avoid Trailing Commas**:
+   - Do not add a comma after the last item in an array or the last property in an object.
+   - Correct: `{"name": "John Doe", "age": 30}`
+   - Incorrect: `{"name": "John Doe", "age": 30,}`

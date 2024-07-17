@@ -1,0 +1,98 @@
+[JSON ANNOTATION EXAMPLE]
+
+EXAMPLE SPEECH 1:
+
+Mr. President. at the appropriate place in the RECORD. I will introduce the statement that does a linebyline analysis of that so that the Members will have that information before them. Mr. President. I want to just take a moment of the Senates time to respond to a letter that was written by my friend. the majority leader. Senator LOTT. to President Clinton differing with the President on his position with regard to the minimum wage. This letter was made available this afternoon and distributed to the members of the press and to the interested Members. I want to take just a moment of time to make some rather brief comments about the letter because I am somewhat amazed at the letter and its conclusion. I will include the whole letter in the RECORD. Mr. President. in paragraph 1 Senator LOTT points out: It is. of course. dismaying that you regard a measure to protect small businesses from the job killing consequences of the minimum wage as a poison.pill. What we have tried to do in the course of the earlier debate is to point out what the impact would be of the increase in the minimum wage which the President. Senator DASCHLE. myself. and others support. In the earlier part of the day we put in the RECORD the Salomon Bros. estimate. I just quote their first paragraph. We believe that many retailers. especially discounters. would benefit from an increase in the minimum wage due to the enhanced purchasing power you create for many lowincome consumers. Their basic point is that it would enhance the economy. The article I included in there from Business Week. the minimum wage argument you have not heard before: As long as its not overdone. lifting the minimum wage may create overall economic gains that outweigh any shortterm job losses. That is an excellent article in Business Week. I also included the excellent Wharton School analysis that was done earlier in this year with regard to job loss. Their estimate is that the total job loss may be as little as 20.000 jobs nationwideeffectively de minimis when we see the growth of 10 million jobs over the period of the last 4 years. They have also pointed out that under the current proposal the inflation rise would be onetenth of 1 percent. While in 1996 and 1997 over the longer term the impact would be nil. virtually no inflation. Onetenth of 1 percent would mean that what you pay $1.000 for you pay $1.001 for. So that is the economic impact on this. I also referred to the Center on Budget and Policy Priorities. their whole statement which I have included in the RECORD. three Nobel laureates. some of the most distinguished economists inthe country. Specifically. the proposed income in the minimum wage over a 2year period falls within the range of alternatives from the overall effects in the labor market. and the effect on workers and the economy would be positive. So I just hope those who are opposed to the position of Senator DASCHLE. myself. and others who support the minimum wage. would come out here and justify their position as being the job killing consequences. Then they talk about electionyear politics and the administration policies. All we say is we have been trying to get this up for over a year and a half. It was not the Democrats who have made this a measure that is up in July prior to the November election. We have been trying to get this up for over a year and a half. The second paragraph goes on to talk about ""Your chief counsel for advocacy on Small Business Administration supports the exemption applying to small businesses grossing under $500.000 a year. precisely what Senator BONDS amendment would provide."" That is a completely inaccurate statement. Our program continues the existing exemption on those under $500.000 with the exception of those that are involved in interstate commerce. That is what the Presidents position is. We want to keep that provision. So Senator BONDS amendment would dramatically change that. That is not a fair reflection of what the Small Business Administration Administrator has suggested. or Secretary Reich has suggested. Then the next paragraph: ""Similarly. you claim such exemption would include twothirds of all firms in the U.S. as if they employ twothirds of all workers."" Of course. there is no such claim in the Presidents letter. So I do not know what they are referring to. Senator BOND advises me that the labor statistics data show that only 3 percent of all workers are paid the minimum wage. and that only 8 percent of our Nations work force are employed by businesses grossing less than $500.000. That is exactly what we said. If you take 8 percent of $126 million. you come out with $8.6 million. The Bureau of Labor Statistics has talked between 9.7 and 10. which would include not only the hourly but the salaried workers. There is some spillover. some relationship. But if they want to settle for 8.6 million on that. I am glad to accept those figures at 9 million. referring to that particular provision of the program. That represents about 2. million children that will be affected. whose parent is the principal supplier for resources of that family. As we mentioned earlier in the debate. this is an issue about children. It is an issue about women. It is an issue about fairness. It is an issue about the economy certainly. But when we talk about hundreds of thousands of children. I find it unpersuasive to state that number to be a relatively small share of the economy. Those 8. 10. or 12 million American children whose lives are going to be affected. the 300.000 who will come out of poverty. the children from over 100.000 families. I think It means something to those families. I would take issue with this attitude. Finally. it continues: What Senator Bond has done is to propose a way to keep the current floor of the minimum wage for everybody. Of course. that is not what it has done. It has what they call a 180day opportunity wage. As I mentioned earlier in this discussion. this will be about 40 percent of all minimum wage workers who move or get another minimum wage job over the course of the year. And this. of course. will be an invitation to those employers to get rid of their workers after 6 months so they can get somebody else in there for the next 6 months. They will only have to pay them $4.25 and not the livable wage of $5.15. So if you take the carveout on the opportunity wage. you take the carveout in the Bond amendment for small business. and you also take the carveout on the restaurant workers. It does not keep the current floor for everyone. The tipcredit provision will prevent the minimum wage increase for tipemployees at restaurants so they are only required to pay $2.13 an hourthat is a special provision for the restaurants even though the profits of that business have gone up over the period of the last 3 or 4 years. So it finally ends up: To veto the legislation over a measure so modest will be difficult to explain to the American people and the millions of small businessmen and women. I urge you to reconsider. My only point. Mr. President. is that we hope our Republican friends would have the similar attitude of Dwight Eisenhower. Richard Nixon. and George Bush. all who supported an increase in the minimum wage and the overwhelming majority of Republicans. including Bob Dole in 1989 and Speaker Gingrich. that supported the increase in the minimum wage when our economy was not nearly as robust and secure. This again comes down to an issue of equity and fairness. It comes down to whether we are going to honor work. Are we going to say to men and women who work hard. play by the rules. work 40 hours a week. 52 weeks of the year. they deserve a livable wage. Republicans and Democrats over the length and the history of this program have supported that position. I find it extraordinary once again that the same forces. the same voices. the same old. tired arguments that were used against Social Security. used against the Medicare Program. have been used against the minimum wage. We are hearing those same tired. old arguments again. I hope that tomorrow. when the Senate has an opportunity to act on it. we will say to American working families that we honor work. We must say that this is one of the best ways to get welfare reform. We must say to those working families who are trying to provide for themselves and for their children that we believe in them and that the members of the Senate will support a livable minimum wage increase. I again thank my colleague and friend from New York for the opportunity to make these observations."
+
+EXAMPLE ANNOTATION 1:
+```json
+{
+  "participation": {
+    "reasoning": "Throughout the speech, the speaker was able to present his arguments without being interrupted or explicitly disturbed. He acknowledged several points and responded to specific statements from other members, indicating a normal participation environment.",
+    "score": 1
+  },
+  "justification": {
+    "level": {
+      "evidence": [
+        "Inferior justification: The speaker begins by expressing amazement at Senator Lott's conclusions without linking his reasons to specific demands.",
+        "Qualified justification: The speaker provides a clear linkage between the demand for increasing the minimum wage and the reasons for it, citing various studies and economic analyses.",
+        "Sophisticated justification (broad): Multiple pieces of evidence, such as the Salomon Bros. estimate, Business Week article, and Wharton School analysis, are presented to support the economic benefits of increasing the minimum wage.",
+        "Sophisticated justification (in depth): The speaker includes detailed evidence, including economic analyses and expert opinions, to build a comprehensive argument for the minimum wage increase."
+      ],
+      "reasoning": "While the initial part of the speech offers some evidence that could be considered inferior justification, the majority of the speech includes multiple, well-linked justifications supported by external sources. The evidence is comprehensive and broad, with detailed support for the demand. Therefore, the most appropriate score is 4, indicating sophisticated justification (in depth).",
+      "score": 4
+    },
+    "content": {
+      "evidence": [
+        "Explicit reference to group/constituency interests: The speaker references children and families, indicating a focus on specific groups.",
+        "Neutral statement: The speech generally avoids explicitly stating group interests in a neutral manner.",
+        "Explicit reference to common good: The speaker argues that increasing the minimum wage would benefit the overall economy and improve fairness, indicating a utilitarian perspective.",
+        "Explicit reference to helping least advantaged: The speaker mentions that the increase would help children and families out of poverty."
+      ],
+      "reasoning": "The speech contains explicit references to both the common good and the least advantaged, particularly when discussing the benefits to children, families, and working individuals. The argument centers on the collective benefits and helping those in poverty, making the most appropriate score 3.",
+      "score": 3
+    }
+  },
+  "respect": {
+    "groups": {
+      "evidence": [
+        "Negative statement about group: No evidence of negative statements about any group.",
+        "Neither negative nor positive: General statements about groups without explicit positive or negative connotations.",
+        "Positive statement about group: The speaker makes positive statements about working families, children, and individuals working minimum wage jobs."
+      ],
+      "reasoning": "The speech contains positive references to groups such as working families and children, highlighting their importance and the positive impact of the proposed policy on them. Therefore, the most appropriate score is 2.",
+      "score": 2
+    },
+    "demands": [
+      {
+        "demand": "Increase the minimum wage from $4.25 to $5.15 over two years",
+        "evidence": [
+          "Negative statement about demand: No evidence of negative statements about the demand for a minimum wage increase.",
+          "Neither negative nor positive: Some statements about demands that do not explicitly value them.",
+          "Positive statement about demand: The speaker makes positive statements about the demand for a minimum wage increase, emphasizing its benefits.",
+          "Agreeing with and positively valuing demand: The speaker strongly supports and values the demand for a minimum wage increase."
+        ],
+        "reasoning": "The speaker not only agrees with but also positively values the demand for a minimum wage increase, presenting it as a matter of fairness and economic benefit. Therefore, the most appropriate score is 3.",
+        "score": 3
+      },
+      {
+        "demand": "Exemptions and delays to minimum wage increase proposed by Senator Lott",
+        "evidence": [
+          "Negative statement about demand: The speaker explicitly argues against and criticizes the proposed exemptions and delays.",
+          "Neither negative nor positive: No evidence of neutral statements about this demand.",
+          "Positive statement about demand: No evidence of positive statements about this demand.",
+          "Agreeing with and positively valuing demand: No evidence of agreement or positive valuation of this demand."
+        ],
+        "reasoning": "The speaker strongly opposes and argues against the proposed exemptions and delays, making negative statements about this demand throughout the speech. Therefore, the most appropriate score is 0.",
+        "score": 0
+      }
+    ],
+    "counterarguments": [
+      {
+        "counterargument": "Raising the minimum wage will cost jobs",
+        "evidence": [
+          "Counterarguments degraded: No evidence of degrading this counterargument.",
+          "Counterarguments ignored: The speaker does not ignore this counterargument but addresses it directly.",
+          "Counterarguments included but not valued: The speaker addresses the job loss counterargument, but primarily to refute it.",
+          "Counterarguments explicitly valued: No explicit positive valuation of this counterargument.",
+          "Counterarguments agreed with: No evidence of agreeing with this counterargument."
+        ],
+        "reasoning": "The speaker includes and addresses the job loss counterargument, but primarily to refute it and provide counter-evidence. Therefore, the most appropriate score is 2.",
+        "score": 2
+      }
+    ]
+  },
+  "constructive_politics": {
+    "evidence": [
+      "Positional politics: The speaker reiterates the position supporting the minimum wage increase.",
+      "Alternative proposal: No alternative proposals are presented.",
+      "Consensus appeal: Some call for understanding and action, but not a specific compromise.",
+      "Mediating proposal: No specific compromises on the current agenda are presented."
+    ],
+    "reasoning": "The speech mainly reiterates the position supporting the minimum wage increase without presenting alternative proposals or specific compromises. Therefore, the most appropriate score is 0.",
+    "score": 0
+  },
+  "notes": "The speech is primarily focused on justifying the demand for a minimum wage increase and refuting counterarguments, including the proposed exemptions and delays. It includes extensive evidence and appeals to both the common good and the least advantaged groups.",
+  "summary": "Overall, the speech demonstrates a high level of justification with multiple pieces of supporting evidence and explicit references to the common good and least advantaged groups. The participation was normal, and respect was shown towards groups and the demand for a minimum wage increase. However, the speaker strongly opposes the proposed exemptions and delays. The main counterargument, job loss, was addressed but primarily to refute it. The speech did not present alternative proposals or specific compromises, focusing on reiterating the position supporting the minimum wage increase."
+}
+```

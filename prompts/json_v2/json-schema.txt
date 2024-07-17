@@ -1,0 +1,54 @@
+JSON SCHEMA:
+```json
+{
+  "participation": {
+    "reasoning": "Brief explanation for the score",
+    "score": [0/1]
+  },
+  "justification": {
+    "level": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3/4]
+    },
+    "content": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3]
+    }
+  },
+  "respect": {
+    "groups": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2]
+    },
+    "demand": {
+      "description": "Brief description of main demand",
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3]
+    },
+    "counterargument": {
+      "description": "Brief description of main counterargument",
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3/4]
+    }
+  },
+  "constructive_politics": {
+    "reasoning": "Brief explanation for the score",
+    "score": [0/1/2/3]
+  }
+}
+```
+
+Be sure to provide any evidence that would be consistent with EACH of the possible annotation scores for each dimension. Remember that scores MUST be integers.
+In addition, adhere to the following principles:
+1. **Use Double Quotes for Strings**:
+   - Always use double quotes (`"`) for string values and property names in JSON.
+   - Example: `"name": "John Doe"`
+
+2. **Escape Special Characters**:
+   - Escape any double quotes within string values using a backslash (`\`).
+   - Example: `"quote": "She said, \"Hello!\""`
+
+3. **Avoid Trailing Commas**:
+   - Do not add a comma after the last item in an array or the last property in an object.
+   - Correct: `{"name": "John Doe", "age": 30}`
+   - Incorrect: `{"name": "John Doe", "age": 30,}`

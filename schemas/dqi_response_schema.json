@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["participation", "justification", "respect", "constructive_politics", "notes", "summary"],
+  "properties": {
+    "participation": {
+      "type": "object",
+      "required": ["reasoning", "score"],
+      "properties": {
+        "reasoning": {"type": "string"},
+        "score": {"type": "integer", "enum": [0, 1]}
+      }
+    },
+    "justification": {
+      "type": "object",
+      "required": ["level", "content"],
+      "properties": {
+        "level": {
+          "type": "object",
+          "required": ["evidence", "reasoning", "score"],
+          "properties": {
+            "evidence": {"type": "array", "items": {"type": "string"}},
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2, 3, 4]}
+          }
+        },
+        "content": {
+          "type": "object",
+          "required": ["evidence", "reasoning", "score"],
+          "properties": {
+            "evidence": {"type": "array", "items": {"type": "string"}},
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2, 3]}
+          }
+        }
+      }
+    },
+    "respect": {
+      "type": "object",
+      "required": ["groups", "demands", "counterarguments"],
+      "properties": {
+        "groups": {
+          "type": "object",
+          "required": ["evidence", "reasoning", "score"],
+          "properties": {
+            "evidence": {"type": "array", "items": {"type": "string"}},
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2]}
+          }
+        },
+        "demands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["demand", "evidence", "reasoning", "score"],
+            "properties": {
+              "demand": {"type": "string"},
+              "evidence": {"type": "array", "items": {"type": "string"}},
+              "reasoning": {"type": "string"},
+              "score": {"type": "integer", "enum": [0, 1, 2, 3]}
+            }
+          }
+        },
+        "counterarguments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["counterargument", "evidence", "reasoning", "score"],
+            "properties": {
+              "counterargument": {"type": "string"},
+              "evidence": {"type": "array", "items": {"type": "string"}},
+              "reasoning": {"type": "string"},
+              "score": {"type": "integer", "enum": [0, 1, 2, 3, 4]}
+            }
+          }
+        }
+      }
+    },
+    "constructive_politics": {
+      "type": "object",
+      "required": ["evidence", "reasoning", "score"],
+      "properties": {
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "reasoning": {"type": "string"},
+        "score": {"type": "integer", "enum": [0, 1, 2, 3]}
+      }
+    },
+    "notes": {"type": "string"},
+    "summary": {"type": "string"}
+  }
+}

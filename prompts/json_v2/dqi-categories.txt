@@ -1,0 +1,45 @@
+[DQI ANNOTATION CATEGORIES]
+For each dimension, consider the evidence that could support assigning each possible score. Provide a brief rationale for why the evidence might fit that score. Then make a final decision on the most appropriate score based on the weight of evidence.
+
+1. Participation
+0: participation was impaired - speaker was cut off or explicitly disturbed
+1: normal participation was possible
+
+2. Justification
+2.1 Level of Justification
+0: no justification
+1: inferior justification - reason given but not properly linked to demand
+2: qualified justification - one complete linkage between demand and reason
+3: sophisticated justification (broad) - multiple complete justifications
+4: sophisticated justification (in depth) - multiple justifications with one embedded in complete inference chain
+
+2.2 Content of Justification
+0: explicit reference to group/constituency interests
+1: neutral statement, no explicit references to group interests
+2: explicit reference to common good (utilitarian/collective)
+3: explicit reference to helping least advantaged (difference principle)
+
+3. Respect
+3.1 Respect toward Groups
+0: explicitly negative statement about group to be helped
+1: neither negative nor positive statement about group
+2: explicitly positive statement about group
+
+3.2 Respect toward main Demand
+0: explicitly negative statement about demand
+1: neither negative nor positive statement about demand
+2: explicitly positive statement about demand
+3: agreeing with and positively valuing demand
+
+3.3 Respect toward main Counterarguments
+0: counterarguments degraded
+1: counterarguments ignored
+2: counterarguments included but not valued
+3: counterarguments explicitly valued
+4: counterarguments agreed with
+
+4. Constructive Politics
+0: positional politics - merely reiterating one's position
+1: alternative proposal - mediating but off current agenda
+2: consensus appeal - unspecific call for compromise
+3: mediating proposal - specific compromise on current agenda

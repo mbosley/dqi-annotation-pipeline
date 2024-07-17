@@ -1,0 +1,317 @@
+#!/usr/bin/env python3
+import json
+import jsonlines
+import argparse
+import logging
+import yaml
+from typing import Dict, Any, Optional, Tuple, List
+import os
+import asyncio
+import aiohttp
+from dataclasses import dataclass
+from jsonschema import validate, ValidationError
+from pathlib import Path
+import re
+import traceback
+
+# Import from api_clients.py
+from api_clients import APIClient, get_api_client, APIResponse
+
+# Configure logging
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Add a file handler for detailed logging
+log_dir = Path('logs')
+log_dir.mkdir(exist_ok=True)
+file_handler = logging.FileHandler(log_dir / 'llm_parsing.log')
+file_handler.setLevel(logging.DEBUG)
+file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+
+@dataclass
+class HealingResult:
+    original_json: str
+    healed_json: Optional[Dict[str, Any]]
+    healing_attempts: int
+    success: bool
+    error_message: Optional[str] = None
+    healing_log: List[str] = None
+    healing_method: str = "rule_based"
+
+class JSONHealer:
+    def __init__(self, schema: Dict[str, Any], client: Optional[APIClient], session: Optional[aiohttp.ClientSession], max_attempts: int = 3, use_llm_fallback: bool = False):
+        self.schema = schema
+        self.client = client
+        self.session = session
+        self.max_attempts = max_attempts
+        self.use_llm_fallback = use_llm_fallback
+
+    async def heal_json(self, original_json: str) -> HealingResult:
+        healing_log = []
+        for attempt in range(self.max_attempts):
+            try:
+                # First, try to parse and validate the JSON
+                parsed_json = json.loads(original_json)
+                validate(instance=parsed_json, schema=self.schema)
+                # If we get here, the JSON is valid
+                healing_log.append(f"Attempt {attempt + 1}: JSON is valid.")
+                return HealingResult(
+                    original_json=original_json,
+                    healed_json=parsed_json,
+                    healing_attempts=attempt + 1,
+                    success=True,
+                    healing_log=healing_log,
+                    healing_method="none_needed"
+                )
+            except (json.JSONDecodeError, ValidationError) as e:
+                healing_log.append(f"Attempt {attempt + 1}: Error: {str(e)}")
+
+                # Always attempt rule-based healing first
+                healed_json_str = self.rule_based_healing(original_json, str(e))
+                healing_log.append(f"Attempt {attempt + 1}: Rule-based healing applied.")
+
+                try:
+                    # Check if rule-based healing was successful
+                    parsed_json = json.loads(healed_json_str)
+                    validate(instance=parsed_json, schema=self.schema)
+                    return HealingResult(
+                        original_json=original_json,
+                        healed_json=parsed_json,
+                        healing_attempts=attempt + 1,
+                        success=True,
+                        healing_log=healing_log,
+                        healing_method="rule_based"
+                    )
+                except (json.JSONDecodeError, ValidationError):
+                    # If rule-based healing failed and LLM fallback is enabled, try LLM healing
+                    if self.use_llm_fallback:
+                        try:
+                            llm_healed_json_str = await self.heal_with_llm(original_json, str(e))
+                            healing_log.append(f"Attempt {attempt + 1}: LLM-based healing applied.")
+                            original_json = llm_healed_json_str
+                        except Exception as llm_error:
+                            healing_log.append(f"Attempt {attempt + 1}: LLM-based healing failed: {str(llm_error)}")
+                    else:
+                        # If LLM fallback is not enabled, continue with the rule-based healed JSON
+                        original_json = healed_json_str
+
+                if attempt == self.max_attempts - 1:
+                    # If this is the last attempt, return the failure result
+                    return HealingResult(
+                        original_json=original_json,
+                        healed_json=None,
+                        healing_attempts=attempt + 1,
+                        success=False,
+                        error_message=f"Failed to heal JSON after {self.max_attempts} attempts: {str(e)}",
+                        healing_log=healing_log,
+                        healing_method="failed"
+                    )
+
+        # If we've exhausted all attempts
+        return HealingResult(
+            original_json=original_json,
+            healed_json=None,
+            healing_attempts=self.max_attempts,
+            success=False,
+            error_message=f"Failed to heal JSON after {self.max_attempts} attempts.",
+            healing_log=healing_log,
+            healing_method="failed"
+        )
+
+    async def heal_with_llm(self, original_json: str, error_message: str) -> str:
+        prompt = f"""The following JSON is invalid:
+
+{original_json}
+
+The JSON should conform to this schema:
+
+{json.dumps(self.schema, indent=2)}
+
+Error encountered:
+{error_message}
+
+Please provide a corrected version of the JSON that conforms to the schema and resolves the error.
+Make minimal changes necessary to fix the JSON. Preserve the original content and structure as much as possible.
+
+ONLY PROVIDE JSON!!! DO NOT PROVIDE ANY COMMENTS ABOUT YOUR UPDATE TO THE JSON
+"""
+
+        try:
+            logger.info(f"Sending healing request to API: {prompt}")
+            api_response = await self.client.send_request(
+                self.session, prompt,
+                "Here is your requested JSON:\n{",
+                "healing_request"
+            )
+            logger.info(f"Received API response: {api_response}")
+            healed_json_str = self.client.extract_content(api_response.response)
+
+            # Use extract_json_from_text to flexibly extract valid JSON
+            json_found, extracted_json = extract_json_from_text(healed_json_str)
+
+            if json_found:
+                logger.info("JSON block found and extracted from API response.")
+                healed_json_str = extracted_json
+            else:
+                logger.warning("No JSON block found in API response. Using the entire response as JSON.")
+
+            # Ensure the healed JSON starts with a curly brace
+            if not healed_json_str.strip().startswith('{'):
+                healed_json_str = '{' + healed_json_str
+
+            return healed_json_str
+
+        except Exception as api_error:
+            logger.error(f"API error during healing attempt: {str(api_error)}")
+            raise
+
+    def rule_based_healing(self, original_json: str, error_message: str) -> str:
+        # Implement rule-based healing logic here
+        # This is a simple example and should be expanded based on common JSON errors
+        healed_json = original_json
+
+        # Fix missing quotes around keys
+        healed_json = re.sub(r'(\w+):', r'"\1":', healed_json)
+
+        # Fix single quotes to double quotes
+        healed_json = healed_json.replace("'", '"')
+
+        # Fix trailing commas in objects and arrays
+        healed_json = re.sub(r',\s*}', '}', healed_json)
+        healed_json = re.sub(r',\s*\]', ']', healed_json)
+
+        # Add missing closing brackets
+        open_curly = healed_json.count('{')
+        close_curly = healed_json.count('}')
+        open_square = healed_json.count('[')
+        close_square = healed_json.count(']')
+
+        healed_json += '}' * (open_curly - close_curly)
+        healed_json += ']' * (open_square - close_square)
+
+        return healed_json
+
+def extract_json_from_text(text: str) -> Tuple[bool, str]:
+    # Pattern to match JSON in various markdown code block formats
+    patterns = [
+        r'```json\s*([\s\S]*?)\s*```',  # JSON in triple backticks
+        r'`json\s*([\s\S]*?)\s*`',      # JSON in single backticks
+        r'here is (?:the|your) (?:corrected |healed )?json:?\s*\n?\s*({[\s\S]*})' # JSON after a specific phrase
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            return True, match.group(1).strip()
+
+    # If no JSON block found, return the original text
+    return False, text
+
+def normalize_response_structure(item: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Normalize the structure of the response to a consistent format.
+    """
+    normalized_item = item.copy()
+
+    if 'response' not in normalized_item:
+        normalized_item['response'] = {}
+
+    if 'content' not in normalized_item['response']:
+        if 'choices' in normalized_item['response']:
+            # For APIs like Deepseek
+            content = normalized_item['response']['choices'][0]['message']['content']
+            normalized_item['response']['content'] = [{'text': content}]
+        else:
+            # Default case if structure is unknown
+            normalized_item['response']['content'] = [{'text': str(normalized_item['response'])}]
+
+    return normalized_item
+
+async def process_jsonl(input_file: str, output_file: str, config: Dict[str, Any], use_llm_fallback: bool):
+    schema = load_schema(config)
+    healer_model_config = config['json_schema']['healing']['healer_model']
+    client = None
+    session = None
+
+    if use_llm_fallback:
+        client = get_api_client(healer_model_config, config['api_settings']['rate_limit'], config['global']['dry_run'], config['model_metadata'])
+        session = aiohttp.ClientSession()
+
+    try:
+        healer = JSONHealer(schema, client, session, max_attempts=config['json_schema']['healing'].get('max_attempts', 3), use_llm_fallback=use_llm_fallback)
+        with jsonlines.open(input_file, 'r') as reader, jsonlines.open(output_file, 'w') as writer:
+            for item in reader:
+                try:
+                    # Normalize the input structure
+                    normalized_item = normalize_response_structure(item)
+                    original_text = client.extract_content(normalized_item['response']) if client else normalized_item['response']['content'][0]['text']
+                    json_found, extracted_json = extract_json_from_text(original_text)
+
+                    if json_found:
+                        logger.info("JSON block found and extracted.")
+                    else:
+                        logger.warning("No JSON block found. Processing the entire text as JSON.")
+
+                    healing_result = await healer.heal_json(extracted_json)
+
+                    if healing_result.success:
+                        normalized_item['response']['content'][0]['text'] = json.dumps(healing_result.healed_json)
+                        normalized_item['healed'] = True
+                        normalized_item['healing_attempts'] = healing_result.healing_attempts
+                    else:
+                        normalized_item['healing_error'] = healing_result.error_message
+                        normalized_item['healing_attempts'] = healing_result.healing_attempts
+
+                    normalized_item['healing_log'] = healing_result.healing_log
+                    normalized_item['healing_method'] = healing_result.healing_method
+                    writer.write(normalized_item)
+
+                except Exception as e:
+                    logger.error(f"Error processing item: {str(e)}")
+                    logger.debug(f"Traceback: {traceback.format_exc()}")
+                    normalized_item['processing_error'] = str(e)
+                    writer.write(normalized_item)
+    finally:
+        if session:
+            await session.close()
+
+def load_config(config_file: str = 'config.yaml') -> Dict[str, Any]:
+    with open(config_file, 'r') as file:
+        return yaml.safe_load(file)
+
+def load_schema(config: Dict[str, Any]) -> Dict[str, Any]:
+    schema_path = config['json_schema']['path']
+    try:
+        with open(schema_path, 'r') as schema_file:
+            return json.load(schema_file)
+    except FileNotFoundError:
+        logging.error(f"Schema file not found: {schema_path}")
+        raise
+    except json.JSONDecodeError:
+        logging.error(f"Invalid JSON in schema file: {schema_path}")
+        raise
+
+def main():
+    parser = argparse.ArgumentParser(description="Heal malformed JSON in API responses")
+    parser.add_argument("--model", required=True, help="Model name to process responses for")
+    parser.add_argument("--config", default="config.yaml", help="Path to config file")
+    parser.add_argument("--llm-healing", action="store_true", help="Use LLM as fallback for JSON healing")
+    args = parser.parse_args()
+
+    config = load_config(args.config)
+
+    input_file = os.path.join(config['data']['output_directory'], f"api_responses_{args.model}.jsonl")
+    output_file = os.path.join(config['data']['output_directory'], f"api_responses_{args.model}_healed.jsonl")
+
+    logging.info(f"Processing responses for model: {args.model}")
+    logging.info(f"Input file: {input_file}")
+    logging.info(f"Output file: {output_file}")
+    logging.info(f"Healing method: Rule-based with {'LLM fallback' if args.llm_healing else 'no LLM fallback'}")
+
+    asyncio.run(process_jsonl(input_file, output_file, config, args.llm_healing))
+    logging.info(f"Healing complete. Results saved to {output_file}")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,89 @@
+[PRIOR PROBABILITIES]
+<prior_probabilities>
+For each dimension, generate prior probabilities for each category based on your understanding of the theory, task, and examples. Present in a table like:
+
+Dimension 1:
+| Category | Prior Prob |
+|----------|------------|
+| Score 1  | ...%       |
+| Score 2  | ...%       |
+| ...      | ...        |
+
+Dimension 2:
+| Category | Prior Prob |
+|----------|------------|
+| Score 1  | ...%       |
+| Score 2  | ...%       |
+| ...      | ...        |
+
+...
+</prior_probabilities>
+
+[EVIDENCE COLLECTION]
+Collect quotes from the speech that are relevant to each dimension:
+
+```xml
+<dimension1_evidence>
+Quotes related to dimension 1
+</dimension1_evidence>
+
+<dimension2_evidence>
+Quotes related to dimension 2
+</dimension2_evidence>
+
+...
+
+<dimensionN_evidence>
+Quotes related to dimension N
+</dimensionN_evidence>
+```
+
+[POSTERIOR UPDATE]
+<posterior_probabilities>
+For each dimension, describe how the evidence shifts the probabilities from the priors. Present the updated posterior probabilities in the same format as the priors.
+</posterior_probabilities>
+
+[FINAL DECISION]
+For each dimension, select the category with the highest posterior probability as the final annotation. Justify why this category is best supported by the evidence.
+
+[JSON OUTPUT]
+Provide the final dimension scores in the pre-specified JSON schema.
+
+```json
+{
+  "participation": {
+    "reasoning": "Brief explanation for the score",
+    "score": [0/1]
+  },
+  "justification": {
+    "level": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3/4]
+    },
+    "content": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3]
+    }
+  },
+  "respect": {
+    "groups": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2]
+    },
+    "demand": {
+      "description": "Brief description of main demand",
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3]
+    },
+    "counterargument": {
+      "description": "Brief description of main counterargument",
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3/4]
+    }
+  },
+  "constructive_politics": {
+    "reasoning": "Brief explanation for the score",
+    "score": [0/1/2/3]
+  }
+}
+```

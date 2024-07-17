@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["annotation"],
+  "properties": {
+    "annotation": {
+      "type": "object",
+      "required": ["participation", "justification", "respect", "constructive_politics"],
+      "properties": {
+        "participation": {
+          "type": "object",
+          "required": ["reasoning", "score"],
+          "properties": {
+            "reasoning": {"type": "string"},
+            "score": {"type": ["integer", "null"], "enum": [0, 1, null]}
+          }
+        },
+        "justification": {
+          "type": "object",
+          "required": ["level", "content"],
+          "properties": {
+            "level": {
+              "type": "object",
+              "required": ["reasoning", "score"],
+              "properties": {
+                "reasoning": {"type": "string"},
+                "score": {"type": ["integer", "null"], "enum": [0, 1, 2, 3, 4, null]}
+              }
+            },
+            "content": {
+              "type": "object",
+              "required": ["reasoning", "score"],
+              "properties": {
+                "reasoning": {"type": "string"},
+                "score": {"type": ["integer", "null"], "enum": [0, 1, 2, 3, null]}
+              }
+            }
+          }
+        },
+        "respect": {
+          "type": "object",
+          "required": ["groups", "demand", "counterargument"],
+          "properties": {
+            "groups": {
+              "type": "object",
+              "required": ["reasoning", "score"],
+              "properties": {
+                "reasoning": {"type": "string"},
+                "score": {"type": ["integer", "null"], "enum": [0, 1, 2, null]}
+              }
+            },
+            "demand": {
+              "type": "object",
+              "required": ["description", "reasoning", "score"],
+              "properties": {
+                "description": {"type": "string"},
+                "reasoning": {"type": "string"},
+                "score": {"type": ["integer", "null"], "enum": [0, 1, 2, 3, null]}
+              }
+            },
+            "counterargument": {
+              "type": "object",
+              "required": ["description", "reasoning", "score"],
+              "properties": {
+                "description": {"type": "string"},
+                "reasoning": {"type": "string"},
+                "score": {"type": ["integer", "null"], "enum": [0, 1, 2, 3, 4, null]}
+              }
+            }
+          }
+        },
+        "constructive_politics": {
+          "type": "object",
+          "required": ["reasoning", "score"],
+          "properties": {
+            "reasoning": {"type": "string"},
+            "score": {"type": ["integer", "null"], "enum": [0, 1, 2, 3, null]}
+          }
+        }
+      }
+    }
+  }
+}
+
+    # can you make this schema so that it matches the following structure:
+{
+  "participation": {
+    "reasoning": "Brief explanation for the score",
+    "score": [0/1]
+  },
+  "justification": {
+    "level": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3/4]
+    },
+    "content": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3]
+    }
+  },
+  "respect": {
+    "groups": {
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2]
+    },
+    "demand": {
+      "description": "Brief description of main demand",
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3]
+    },
+    "counterargument": {
+      "description": "Brief description of main counterargument",
+      "reasoning": "Brief explanation for the score",
+      "score": [0/1/2/3/4]
+    }
+  },
+  "constructive_politics": {
+    "reasoning": "Brief explanation for the score",
+    "score": [0/1/2/3]
+  }
+}
+
+
+Here's the updated JSON schema that matches the structure you provided:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["participation", "justification", "respect", "constructive_politics"],
+  "properties": {
+    "participation": {
+      "type": "object",
+      "required": ["reasoning", "score"],
+      "properties": {
+        "reasoning": {"type": "string"},
+        "score": {"type": "integer", "enum": [0, 1]}
+      }
+    },
+    "justification": {
+      "type": "object",
+      "required": ["level", "content"],
+      "properties": {
+        "level": {
+          "type": "object",
+          "required": ["reasoning", "score"],
+          "properties": {
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2, 3, 4]}
+          }
+        },
+        "content": {
+          "type": "object",
+          "required": ["reasoning", "score"],
+          "properties": {
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2, 3]}
+          }
+        }
+      }
+    },
+    "respect": {
+      "type": "object",
+      "required": ["groups", "demand", "counterargument"],
+      "properties": {
+        "groups": {
+          "type": "object",
+          "required": ["reasoning", "score"],
+          "properties": {
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2]}
+          }
+        },
+        "demand": {
+          "type": "object",
+          "required": ["description", "reasoning", "score"],
+          "properties": {
+            "description": {"type": "string"},
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2, 3]}
+          }
+        },
+        "counterargument": {
+          "type": "object",
+          "required": ["description", "reasoning", "score"],
+          "properties": {
+            "description": {"type": "string"},
+            "reasoning": {"type": "string"},
+            "score": {"type": "integer", "enum": [0, 1, 2, 3, 4]}
+          }
+        }
+      }
+    },
+    "constructive_politics": {
+      "type": "object",
+      "required": ["reasoning", "score"],
+      "properties": {
+        "reasoning": {"type": "string"},
+        "score": {"type": "integer", "enum": [0, 1, 2, 3]}
+      }
+    }
+  }
+}

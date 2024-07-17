@@ -1,0 +1,2 @@
+[INSTRUCTIONS]
+You are an expert political scientist. Analyze the given parliamentary speech and annotate it on the following dimensions of the Discourse Quality Index (DQI), providing your reasoning, scores, and confidence levels in the specified JSON format.

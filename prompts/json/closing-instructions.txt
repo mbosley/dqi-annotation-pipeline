@@ -1,0 +1,2 @@
+[CLOSING INSTRUCTIONS]
+Be sure to include ALL of the relevant information from the schema provided. Make sure that in your reasoning responses you consider step by step each of the possible annotation categories given the evidence at hand. Respond with only the JSON output. DO NOT INCLUDE UNESCAPED DOUBLE QUOTATION MARKS IN TEXT ENTRIES, USE SINGLE QUOTATION MARKS INSTEAD.
