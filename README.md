@@ -31,9 +31,13 @@
 - [License](#license)
 - [Citation](#citation)
 
+## Disclaimer
+
+This codebase is still very much a work in progress! It works well for me, but I cannot yet guarantee that it will work perfectly for you if you clone it and try to run it as-is. In particular, the codebase assumes that you've already downloaded the US congress debate data (https://data.stanford.edu/congress_text) as well as the DQI annotations. If you're interested in developing this kind of codebase as a package for general use, please reach out to me at mitchellbosley@gmail.com
+
 ## Introduction
 
-This repository contains the comprehensive codebase for the Automated DQI Annotation Pipeline, as presented at [Conference Name]. The pipeline leverages state-of-the-art Large Language Models (LLMs) to automate the annotation of political speeches using the Discourse Quality Index (DQI) framework (Steenbergen et al., 2003).
+This repository contains the comprehensive codebase for the Automated DQI Annotation Pipeline, as presented at PolMeth 2024. The pipeline leverages state-of-the-art Large Language Models (LLMs) to automate the annotation of political speeches using the Discourse Quality Index (DQI) framework (Steenbergen et al., 2003).
 
 This approach demonstrates the feasibility of using LLMs for complex content analysis tasks in political science, with the goal of dramatically increasing the scale at which researchers can apply frameworks like DQI to large corpora of political discourse.
 
