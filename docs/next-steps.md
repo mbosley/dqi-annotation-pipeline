@@ -8,7 +8,8 @@ _Updated: March 1, 2026_
 2. Add schema fixtures for common malformed output patterns.
 3. Add a tiny `src/core/cli.py` for synthetic run execution and artifact writing.
 4. Add CI to run `tools/smoke.sh` and integration tests on pull requests.
-5. Remove or relocate legacy research artifacts that are outside public scope.
+5. Harvest reusable components from `~/projects/congress-reports` via `docs/congress-reports-integration.md`.
+6. Remove or relocate legacy research artifacts that are outside public scope.
 
 ## Definition of done for current phase
 

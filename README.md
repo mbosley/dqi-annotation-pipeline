@@ -1,6 +1,6 @@
-# 🗳️ dqi-annotation-pipeline
+# 🧭 delibtrace
 
-Reusable primitives for automating Discourse Quality Index (DQI) annotation workflows.
+Reusable primitives for tracing and measuring deliberative quality at scale.
 
 ## Scope
 
@@ -25,6 +25,7 @@ Reusable primitives for automating Discourse Quality Index (DQI) annotation work
 - Boundary policy: `policy/ip-boundary.md`
 - Privacy/data policy: `policy/data-and-privacy.md`
 - Prompt/eval policy: `policy/prompts-and-evals.md`
+- Congress integration plan: `docs/congress-reports-integration.md`
 
 ## Project citation
 

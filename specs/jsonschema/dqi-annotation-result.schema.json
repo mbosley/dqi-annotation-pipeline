@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/mbosley/dqi-annotation-pipeline/specs/jsonschema/dqi-annotation-result.schema.json",
+  "$id": "https://github.com/mbosley/delibtrace/specs/jsonschema/dqi-annotation-result.schema.json",
   "title": "DQI Annotation Result",
   "type": "object",
   "required": [
