@@ -8,3 +8,6 @@ Rules:
 - no private prompt assets
 
 Add future fixtures here as part of Phase 1/2 harvest work.
+
+Current fixture:
+- `dqi_samples.jsonl`: tiny synthetic dataset for integration testing.

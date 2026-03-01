@@ -9,6 +9,7 @@ Reusable primitives for automating Discourse Quality Index (DQI) annotation work
 - Structured output repair + validation utilities
 - Evaluation primitives (accuracy, ordinal error, disagreement)
 - Synthetic end-to-end examples and offline smoke checks
+- Minimal clean interface in `src/core/`
 
 ## Out of scope
 
@@ -37,6 +38,7 @@ Reusable primitives for automating Discourse Quality Index (DQI) annotation work
 ```bash
 ./tools/ip-scan.sh
 ./tools/smoke.sh
+python3 -m unittest tests.integration.test_synthetic_end_to_end -v
 ```
 
 ## License
