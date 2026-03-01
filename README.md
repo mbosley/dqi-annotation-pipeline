@@ -21,6 +21,7 @@ Reusable primitives for automating Discourse Quality Index (DQI) annotation work
 ## Project docs
 
 - Plan: `docs/harvest-plan.md`
+- Next steps: `docs/next-steps.md`
 - Boundary policy: `policy/ip-boundary.md`
 - Privacy/data policy: `policy/data-and-privacy.md`
 - Prompt/eval policy: `policy/prompts-and-evals.md`
