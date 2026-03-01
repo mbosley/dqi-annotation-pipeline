@@ -26,22 +26,22 @@ Reusable primitives for automating Discourse Quality Index (DQI) annotation work
 - Privacy/data policy: `policy/data-and-privacy.md`
 - Prompt/eval policy: `policy/prompts-and-evals.md`
 
-## Foundational citation (DQI)
-
-Steenbergen, M. R., Bächtiger, A., Spörndli, M., & Steiner, J. (2003). _Measuring Political Deliberation: A Discourse Quality Index_. Comparative European Politics, 1(1), 21–48. https://doi.org/10.1057/palgrave.cep.6110002
+## Project citation
 
 ```bibtex
-@article{steenbergen2003dqi,
-  author = {Steenbergen, Marco R. and B{\"a}chtiger, Andr{\'e} and Sp{\"o}rndli, Markus and Steiner, J{\"u}rg},
-  title = {Measuring Political Deliberation: A Discourse Quality Index},
-  journal = {Comparative European Politics},
-  year = {2003},
-  volume = {1},
-  number = {1},
-  pages = {21--48},
-  doi = {10.1057/palgrave.cep.6110002}
+@article{bosley2025towards,
+  author = {Bosley, Mitchell},
+  title = {Towards Qualitative Measurement at Scale: A Prompt-Engineering Framework for Large-Scale Analysis of Deliberative Quality in Parliamentary Debates},
+  journal = {Journal of Political Institutions and Political Economy},
+  year = {2025},
+  volume = {6},
+  number = {3-4},
+  pages = {355--383},
+  doi = {10.1561/113.00000128}
 }
 ```
+
+Bosley, M. (2025). _Towards Qualitative Measurement at Scale: A Prompt-Engineering Framework for Large-Scale Analysis of Deliberative Quality in Parliamentary Debates_. Journal of Political Institutions and Political Economy, 6(3-4), 355–383. https://doi.org/10.1561/113.00000128
 
 ## Near-term roadmap
 
