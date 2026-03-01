@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mbosley/dqi-annotation-pipeline/specs/jsonschema/dqi-annotation-result.schema.json",
+  "title": "DQI Annotation Result",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "labels",
+    "model",
+    "run_metadata"
+  ],
+  "properties": {
+    "sample_id": {
+      "type": "string"
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "provider",
+        "name"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "run_metadata": {
+      "type": "object",
+      "required": [
+        "run_id",
+        "timestamp_utc"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "repair_applied": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
