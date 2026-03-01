@@ -11,6 +11,11 @@ _Updated: March 1, 2026_
 5. Harvest reusable components from `~/projects/congress-reports` via `docs/congress-reports-integration.md`.
 6. Remove or relocate legacy research artifacts that are outside public scope.
 
+## Phase A status
+
+- Phase A (inventory/spec) is complete: `docs/congress-reports-harvest-inventory.md`.
+- Next implementation target: workspace indexing + provider contract + validation layer.
+
 ## Definition of done for current phase
 
 - Core interface remains stable (`src/core/contracts.py` + `src/core/runner.py`).

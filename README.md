@@ -26,6 +26,8 @@ Reusable primitives for tracing and measuring deliberative quality at scale.
 - Privacy/data policy: `policy/data-and-privacy.md`
 - Prompt/eval policy: `policy/prompts-and-evals.md`
 - Congress integration plan: `docs/congress-reports-integration.md`
+- Congress harvest inventory (Phase A): `docs/congress-reports-harvest-inventory.md`
+- Publications using these tools: `docs/publications.md`
 
 ## Project citation
 

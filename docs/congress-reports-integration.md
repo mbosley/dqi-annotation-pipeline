@@ -6,6 +6,8 @@ _Updated: March 1, 2026_
 
 Harvest reusable, public-safe components from `~/projects/congress-reports` into `delibtrace` to expand deliberative-quality workflows while preserving clean boundaries.
 
+Phase A inventory artifact: `docs/congress-reports-harvest-inventory.md`.
+
 ## Integration targets
 
 1. **Data normalization primitives**
@@ -33,6 +35,7 @@ Harvest reusable, public-safe components from `~/projects/congress-reports` into
 
 - Identify candidate modules in `congress-reports` that are domain-agnostic.
 - Write concise interface specs for each candidate before implementation.
+- Status: completed on March 1, 2026.
 
 ### Phase B: Clean-room reimplementation
 
